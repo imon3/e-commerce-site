@@ -16,9 +16,17 @@ class ProductProvider extends React.Component {
   }
 
   componentDidMount() {
+    const tempDetailProduct = detailProduct;
+    let tempProducts = [];
+
+    storeProducts.forEach(item => {
+      let singleItem = { ...item };
+      tempProducts = [...tempProducts, singleItem];
+    });
+
     this.setState({
-      products: storeProducts,
-      detailProduct: detailProduct
+      products: tempProducts,
+      detailProduct: tempDetailProduct
     });
   }
 
@@ -26,8 +34,8 @@ class ProductProvider extends React.Component {
     console.log("hello from detail");
   };
 
-  addToCart = () => {
-    console.log("hello from add to cart");
+  addToCart = id => {
+    console.log(`hello from add to cart.id is ${id}`);
   };
 
   render() {
