@@ -3,18 +3,22 @@ import logo from "./logo.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// component imports
+import Navbar from "./components/navbar/Navbar";
+import ProductList from "./components/product/ProductList";
+import Details from "./components/details/Details";
+import Cart from "./components/cart/Cart";
+import Default from "./components/default/Default";
+
 function App() {
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-6">column number one</div>
-        <div className="col-6">
-          <span>
-            <i className="fas fa-home" />
-          </span>
-        </div>
-      </div>
-    </div>
+    <>
+      <Navbar />
+      <ProductList />
+      <Details />
+      <Cart />
+      <Default />
+    </>
   );
 }
 
