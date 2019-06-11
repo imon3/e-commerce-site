@@ -12,7 +12,7 @@ class ProductProvider extends React.Component {
     this.state = {
       products: [],
       detailProduct: [],
-      cart: storeProducts,
+      cart: [],
       modalOpen: false,
       modalProduct: [],
       cartSubTotal: 0,
@@ -22,6 +22,10 @@ class ProductProvider extends React.Component {
   }
 
   componentDidMount() {
+    this.setProducts();
+  }
+
+  setProducts = () => {
     const tempDetailProduct = detailProduct;
     const tempModalProduct = detailProduct;
     let tempProducts = [];
@@ -36,7 +40,7 @@ class ProductProvider extends React.Component {
       detailProduct: tempDetailProduct,
       modalProduct: tempModalProduct
     });
-  }
+  };
 
   handleDetail = id => {
     const product = this.getItem(id);
@@ -60,7 +64,7 @@ class ProductProvider extends React.Component {
           cart: [...this.state.cart, product]
         };
       },
-      () => console.log(this.state)
+      () => this.addTotals()
     );
   };
 
@@ -100,7 +104,31 @@ class ProductProvider extends React.Component {
   };
 
   clearCart = () => {
-    console.log("this cart is cleared");
+    this.setState(
+      {
+        cart: []
+      },
+      () => {
+        this.setProducts();
+      }
+    );
+  };
+
+  addTotals = () => {
+    let subTotal = 0;
+    this.state.cart.map(item => {
+      return (subTotal += item.total);
+    });
+    const tempTax = subTotal * 0.1;
+    const tax = parseFloat(tempTax.toFixed(2));
+    const total = subTotal + tax;
+    this.setState(() => {
+      return {
+        cartSubTotal: subTotal,
+        cartTax: tax,
+        cartTotal: total
+      };
+    });
   };
 
   render() {
