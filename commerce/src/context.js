@@ -12,7 +12,7 @@ class ProductProvider extends React.Component {
     this.state = {
       products: [],
       detailProduct: [],
-      cart: [],
+      cart: storeProducts,
       modalOpen: false,
       modalProduct: [],
       cartSubTotal: 0,
