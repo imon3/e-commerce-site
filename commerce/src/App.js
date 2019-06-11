@@ -9,6 +9,7 @@ import ProductList from "./components/product/ProductList";
 import Details from "./components/details/Details";
 import Cart from "./components/cart/Cart";
 import Default from "./components/default/Default";
+import Modal from "./components/modal/Modal";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/cart" component={Cart} />
         <Route component={Default} />
       </Switch>
+      <Modal />
     </>
   );
 }
