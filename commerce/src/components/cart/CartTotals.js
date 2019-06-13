@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import PayPalButton from "../paypal/PayPal";
 
 const CartTotals = props => {
-  const { cartSubTotal, cartTax, cartTotal, clearCart, history } = props.value;
+  const history = props.history;
+  const { cartSubTotal, cartTax, cartTotal, clearCart } = props.value;
   return (
     <>
       <div className="container">
